@@ -53,7 +53,13 @@
      sudo cp -rf resnet/* models/2/
      sudo cp -rf resnet/* models/3/
      ```
-  - 
+## Runing the docker image 
+- we would need to use volume so that the models in our VM can be mapped to the container and remain.
+```bash
+# it would pull and open the container termianl 
+docker run -it -v models:/models -p 8501:8501 --entrypoint /bin/bash tensorflow/serving
+```
+
 
   
         
