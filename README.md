@@ -74,7 +74,7 @@ you should see something like this
 ```bash 
 wget https://raw.githubusercontent.com/hossamAhmedSalah/devops_depi/refs/heads/main/cat.jpeg
 ```
-
+- You would need to path the image to the tensorflow serving server and resnet expect images to be in a certain shape and dimensions so I made a utility script in python :  [image_preprocessing.py](https://github.com/hossamAhmedSalah/devops_depi/blob/main/image_preprocessing.py)
 
 
   
