@@ -160,24 +160,16 @@ curl -d @request_payload.json -H "Content-Type: application/json" -X POST http:/
        ```
        ![image](https://github.com/user-attachments/assets/b577aaf1-f9c9-4c5b-90a3-b79058214139)
 ## Batching 
-- we would need to modify the config file or just make new one with the new modifications
+- we would need to create new one with the batching parameters `config_batching`
 ```json
-      model_config_list: {
-        config: {
-          name: "resnet",
-          base_path: "/models/",
-          model_platform: "tensorflow",
-          model_version_policy: {
-            all: { }                                          
-          }
-        }
-         batching_parameters: {
-            enable_batching: true
-            batch_timeout_micros: 5000  # Time to wait for batching
-            max_batch_size: 32           # Maximum size of the batch
-            batch_input_dimensions: [224, 224, 3]  # Expected input dimensions
-          }
-      }
+max_batch_size { value: 128 }
+batch_timeout_micros { value: 0 }
+max_enqueued_batches { value: 1000000 }
+num_batch_threads { value: 8 }
+     
+```
+```bash
+ttensorflow_model_server --rest_api_port=8501 --model_config_file=/models/model.config.a --batching_parameter
 ```
 
        
