@@ -94,6 +94,34 @@ curl -d @request_payload.json -H "Content-Type: application/json" -X POST http:/
 ![image](https://github.com/user-attachments/assets/7db82634-5b24-4d9a-a0b3-064d7659c10b)
 - Let's make it more simpler and package everything in one script that is [preprocess_predict_map.py](https://github.com/hossamAhmedSalah/devops_depi/blob/main/predict_and_map.py)
 ![image](https://github.com/user-attachments/assets/4b6a5120-1391-4c43-b645-4ca1f90992a5)
+- The current version that is runing
+  ```
+  curl http://localhost:8501/v1/models/resnet
+  ```
+  ![image](https://github.com/user-attachments/assets/4bc4d9b1-6c2d-44ee-9a25-c281401f9f95)
+  - so by default it goes to the `models/` directory and select the highest number to be the servable version, let's change this and serve multiple versions at the same time.
+      - pause the server inside the container by pressing `ctrl+c`
+      - the config file `model.config.a`
+      ```json
+      model_config_list: {
+        config: {
+          name: "resnet",
+          base_path: "/models/resnet",
+          model_platform: "tensorflow",
+          model_version_policy: {
+            all: { }                                          
+          }
+        }
+      }
+      ```
+      - it should be like this
+      - this in the host
+        ![image](https://github.com/user-attachments/assets/784f8e88-e273-4e8e-806a-9e3f21d1891e)
+      - this in the container
+        ![image](https://github.com/user-attachments/assets/a908df37-5b43-4555-893f-d5da507702b2)
+
+        
+
   
 
 
