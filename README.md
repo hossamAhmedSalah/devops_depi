@@ -123,6 +123,37 @@ curl -d @request_payload.json -H "Content-Type: application/json" -X POST http:/
         ```bash
         tensorflow_model_server --rest_api_port=8501 --model_config_file=/models/model.config.a
         ```
+       - now let's see the versions by runing this command `curl http://localhost:8501/v1/models/resne`
+       ```
+       {
+         "model_version_status": [
+          {
+           "version": "3",
+           "state": "AVAILABLE",
+           "status": {
+            "error_code": "OK",
+            "error_message": ""
+           }
+          },
+          {
+           "version": "2",
+           "state": "AVAILABLE",
+           "status": {
+            "error_code": "OK",
+            "error_message": ""
+           }
+          },
+          {
+           "version": "1",
+           "state": "AVAILABLE",
+           "status": {
+            "error_code": "OK",
+            "error_message": ""
+           }
+          }
+         ]
+        }
+       ```
 
         
 
