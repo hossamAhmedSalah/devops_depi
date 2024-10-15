@@ -222,6 +222,10 @@ sudo docker build -t  hossamahmedsalah/tf-serving:resnet .
   ```
   docker push hossamahmedsalah/tf-serving:resnet
   ```
+- to pull it you would use this command
+  ```
+  docker pull hossamahmedsalah/tf-serving:resnet
+  ```
        
      
         
