@@ -59,6 +59,10 @@
 # it would pull and open the container termianl 
 docker run -it -v $(pwd)/models/:/models -p 8501:8501 --entrypoint /bin/bash tensorflow/serving
 ```
+- To delete the containers
+```bash
+  docker rm $(docker container ps -aq)
+```
 
 
   
