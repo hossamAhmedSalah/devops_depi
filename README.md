@@ -87,6 +87,9 @@ curl -d @request_payload.json -H "Content-Type: application/json" -X POST http:/
 ```
 - you would see a terrifying matrix of predictions 
 ![image](https://github.com/user-attachments/assets/affcfc46-a564-4a3f-9ae4-f64ed4a4ac2c)
+- let's postprocess the prediction to make it readable I hope the model would guess the image correctly after all this...anyway
+- here is the [1000 class of iamgenet](https://github.com/hossamAhmedSalah/devops_depi/blob/main/imagenet1000_clsidx_to_labels.json)
+- I used another script that would send the request and map the result to the classes [predict_and_map.py](https://github.com/hossamAhmedSalah/devops_depi/blob/main/predict_and_map.py)
 
 
   
