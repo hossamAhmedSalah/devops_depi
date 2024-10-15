@@ -293,6 +293,11 @@ kubectl get deployment
 kubectl apply -f tf-serving-service.yaml
 ```
 ![image](https://github.com/user-attachments/assets/997248ff-e3e6-41f1-a8db-db55a09af05d)
+- Let's check for the external API
+```bash
+kubectl get svc tf-serving-service
+```
+![image](https://github.com/user-attachments/assets/1dd87137-6d3c-4ec4-8961-c9bf0bf3a20d)
 
 
 
