@@ -106,7 +106,7 @@ curl -d @request_payload.json -H "Content-Type: application/json" -X POST http:/
       model_config_list: {
         config: {
           name: "resnet",
-          base_path: "/models/resnet",
+          base_path: "/models/",
           model_platform: "tensorflow",
           model_version_policy: {
             all: { }                                          
@@ -119,6 +119,10 @@ curl -d @request_payload.json -H "Content-Type: application/json" -X POST http:/
         ![image](https://github.com/user-attachments/assets/784f8e88-e273-4e8e-806a-9e3f21d1891e)
       - this in the container
         ![image](https://github.com/user-attachments/assets/a908df37-5b43-4555-893f-d5da507702b2)
+      - run this command in the container to server the models following the configurations we made
+        ```bash
+        tensorflow_model_server --rest_api_port=8501 --model_config_file=/models/model.config.a
+        ```
 
         
 
