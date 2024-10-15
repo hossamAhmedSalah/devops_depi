@@ -51,7 +51,7 @@ def map_prediction(predictions, label_map):
 # Main function to run the process
 def main(image_path, mode, label_map, model_version=None):
     # Construct the URL based on the model version
-    url = f'http://localhost:8501/v1/models/resnet:{model_version}' if model_version else 'http://localhost:8501/v1/models/resnet:predict'
+    url = f'http://localhost:8501/v1/models/resnet/versions/{model_version}:predict' if model_version else 'http://localhost:8501/v1/models/resnet:predict'
     
     image_array = preprocess_image(image_path)
     prepare_payload(image_array, mode)
