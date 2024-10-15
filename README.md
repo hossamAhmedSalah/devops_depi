@@ -273,6 +273,30 @@ spec:
   selector:
     app: tf-serving  # Selects the pods with this label
 ```
+- Let's check the nodes Before applying 
+```bash
+kubectl get nodes
+```
+![image](https://github.com/user-attachments/assets/8f8a3df1-cc39-4604-b2e7-5b5b4fde4a7c)
+- Let's apply `tf-serving-deployment.yaml`
+```bash
+kubectl apply -f tf-serving-deployment.yaml
+```
+![image](https://github.com/user-attachments/assets/606cb2b8-b4a1-4be1-ba17-0b3245ac9ec3)
+- Let's check
+```bash
+kubectl get deployment
+```
+![image](https://github.com/user-attachments/assets/87e099d9-e745-40ff-a504-a20b55af5a05)
+- Let's apply the service that would work as a loadbalancer
+```bash
+kubectl apply -f tf-serving-service.yaml
+```
+![image](https://github.com/user-attachments/assets/997248ff-e3e6-41f1-a8db-db55a09af05d)
+
+
+
+
 
        
      
