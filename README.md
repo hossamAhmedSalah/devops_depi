@@ -169,7 +169,7 @@ num_batch_threads { value: 8 }
      
 ```
 ```bash
-ttensorflow_model_server --rest_api_port=8501 --model_config_file=/models/model.config.a --batching_parameter
+tensorflow_model_server --rest_api_port=8501 --model_config_file=/models/model.config.a --batching_parameters_file=/models/config_batching --enable_batching=true
 ```
 
        
