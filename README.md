@@ -159,6 +159,26 @@ curl -d @request_payload.json -H "Content-Type: application/json" -X POST http:/
        python3 preprocess_predict_map_v.py <image> <mode> [<version>]
        ```
        ![image](https://github.com/user-attachments/assets/b577aaf1-f9c9-4c5b-90a3-b79058214139)
+## Batching 
+- we would need to modify the config file or just make new one with the new modifications
+```json
+      model_config_list: {
+        config: {
+          name: "resnet",
+          base_path: "/models/",
+          model_platform: "tensorflow",
+          model_version_policy: {
+            all: { }                                          
+          }
+        }
+         batching_parameters: {
+            enable_batching: true
+            batch_timeout_micros: 5000  # Time to wait for batching
+            max_batch_size: 32           # Maximum size of the batch
+            batch_input_dimensions: [224, 224, 3]  # Expected input dimensions
+          }
+      }
+```
 
        
      
