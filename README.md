@@ -217,6 +217,11 @@ sudo docker build -t  hossamahmedsalah/tf-serving:resnet .
       tail is a Unix command that displays the last few lines of a file. By default, it shows the last 10 lines of a file. The -f option stands for "follow," which means that tail will continue to display new lines as they are added to the file.
  > - What is `/dev/null`?
 `/dev/null` is a special file in Unix-like systems that represents a null device. It's a "black hole" where any data written to it is discarded, and it always returns an end-of-file (EOF) when read from. In other words, `/dev/null` is a file that never contains any data and always appears empty.
+
+- Pushing the image to docker hub (you need to login)
+  ```
+  docker push hossamahmedsalah/tf-serving:resnet
+  ```
        
      
         
