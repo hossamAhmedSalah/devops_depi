@@ -63,6 +63,10 @@ docker run -it -v $(pwd)/models/:/models -p 8501:8501 --entrypoint /bin/bash ten
 ```bash
   docker rm $(docker container ps -aq)
 ```
+## After runing the `tensorflow/serving` container we need to server models
+```bash
+tensorflow_model_server --rest_api_port=8501 --model_name=resnet --model_base_path=/models/
+```
 
 
   
