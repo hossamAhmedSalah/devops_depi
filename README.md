@@ -299,6 +299,8 @@ kubectl get svc tf-serving-service
 ```
 ![image](https://github.com/user-attachments/assets/1dd87137-6d3c-4ec4-8961-c9bf0bf3a20d)
 
+- check the external address from my browser
+![image](https://github.com/user-attachments/assets/afc9aeb7-3abf-4d10-8f36-d21057717562)
 
 
 
