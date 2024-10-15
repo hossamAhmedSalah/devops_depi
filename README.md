@@ -74,10 +74,20 @@ you should see something like this
 ```bash 
 wget https://raw.githubusercontent.com/hossamAhmedSalah/devops_depi/refs/heads/main/cat.jpeg
 ```
-- create this file `request_payload.json` as it would be used to send the data to the model to make predictions on it.
+- create this file `request_payload.json` as it would be used to send the data to the model to make predictions on it, using this command `tocuh request_payload.json`
+
 - You would need to path the image to the tensorflow serving server and resnet expect images to be in a certain shape and dimensions so I made a utility script in python :  [image_preprocessing.py](https://github.com/hossamAhmedSalah/devops_depi/blob/main/image_preprocessing.py)
 - To use this file you would run `python3 script.py <image_path> <mode>` make sure you have the libraries installed
   - mode can be `append` or `overwrtie` as this script can be used sequentially to preprocess the images before passing it to the server, it save the image in the `request_payload.json` file.
+  - `append` add the new preprocessed image to the json file.
+  - `overwrite` just delete any previous content and add the new processed image.
+- great let's use the send the image to the server after we had processed it.
+```bash
+curl -d @request_payload.json -H "Content-Type: application/json" -X POST http://localhost:8501/v1/models/resnet:predict
+```
+- you would see a terrifying matrix of predictions 
+![image](https://github.com/user-attachments/assets/affcfc46-a564-4a3f-9ae4-f64ed4a4ac2c)
+
 
   
         
