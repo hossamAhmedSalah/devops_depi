@@ -178,6 +178,17 @@ tensorflow_model_server --rest_api_port=8501 --model_config_file=/models/model.c
   - deployment & service
 3. Monitor the Deployment
 ## 1. building docker file for a custom tensorflow/serving image
+- `run_server.sh` put it 
+```bash
+#!/bin/bash
+
+# Run TensorFlow Serving with the specified model and batching configurations
+tensorflow_model_server --rest_api_port=8501 --model_config_file=/models/model.config.a --batching_parameters_file=/models/config_batching --enable_batching=true
+
+# Keep the container running
+tail -f /dev/null
+
+```
 ```.Dockerfile
 # Use TensorFlow Serving as base image
 FROM tensorflow/serving:latest
@@ -185,12 +196,13 @@ FROM tensorflow/serving:latest
 # Copy the model and configuration files into the container
 COPY models/ /models/
 
-# Set the command to run TensorFlow Serving with model and batching configurations
-SHELL ["bin/bash"]
+# Create a script to run TensorFlow Serving and keep the container running
+COPY run_server.sh /models/run_server.sh
+RUN chmod +x /models/run_server.sh
 
-ENTRYPOINT ["tensorflow_model_server"]
+# Set the entrypoint to run the script
+ENTRYPOINT ["/models/run_server.sh"]
 
-CMD ["--rest_api_port, "8501", "--model_config_file","/models/model.config.a", "--batching_parameters_file","/models/config_batching", "--enable_batching","true"]
 
 
 
@@ -198,7 +210,7 @@ CMD ["--rest_api_port, "8501", "--model_config_file","/models/model.config.a", "
 ```
 - Building
 ```bash
-
+sudo docker build -t  hossamahmedsalah/tf-serving:resnet .
 ```
        
      
