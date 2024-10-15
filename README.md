@@ -226,6 +226,54 @@ sudo docker build -t  hossamahmedsalah/tf-serving:resnet .
   ```
   docker pull hossamahmedsalah/tf-serving:resnet
   ```
+## 2. Define Kubernetes Manifests
+- `tf-serving-deployment.yaml`
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tf-serving-deployment
+  labels:
+    app: tf-serving
+spec:
+  replicas: 3  # Number of replicas
+  selector:
+    matchLabels:
+      app: tf-serving
+  template:
+    metadata:
+      labels:
+        app: tf-serving
+    spec:
+      containers:
+      - name: tf-serving
+        image: hossamahmedsalah/tf-serving:resnet 
+        ports:
+        - containerPort: 8501  # HTTP/REST
+        - containerPort: 8500  # gPRC
+
+```
+- `tf-serving-service.yaml`
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: tf-serving-service
+  labels:
+    app: tf-serving
+spec:
+  type: LoadBalancer  # Exposes the service externally
+  ports:
+    - name: grpc
+      port: 8500  # Port for gRPC
+      targetPort: 8500  # Port on the container
+    - name: restapi
+      port: 8501  # Port for HTTP/REST
+      targetPort: 8501  # Port on the container
+  selector:
+    app: tf-serving  # Selects the pods with this label
+```
+
        
      
         
