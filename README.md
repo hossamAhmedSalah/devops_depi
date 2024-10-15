@@ -70,6 +70,11 @@ tensorflow_model_server --rest_api_port=8501 --model_name=resnet --model_base_pa
 you should see something like this 
 ![image](https://github.com/user-attachments/assets/cf890f51-83d7-4c04-873c-d5a2f31079e1)
 
+- download this cat image or anyother iamge from the 1000class in imagenet
+```bash 
+wget https://raw.githubusercontent.com/hossamAhmedSalah/devops_depi/refs/heads/main/cat.jpeg
+```
+
 
 
   
