@@ -177,7 +177,29 @@ tensorflow_model_server --rest_api_port=8501 --model_config_file=/models/model.c
 2. Define Kubernetes Manifests
   - deployment & service
 3. Monitor the Deployment
+## 1. building docker file for a custom tensorflow/serving image
+```.Dockerfile
+# Use TensorFlow Serving as base image
+FROM tensorflow/serving:latest
 
+# Copy the model and configuration files into the container
+COPY models/ /models/
+
+# Set the command to run TensorFlow Serving with model and batching configurations
+SHELL ["bin/bash"]
+
+ENTRYPOINT ["tensorflow_model_server"]
+
+CMD ["--rest_api_port, "8501", "--model_config_file","/models/model.config.a", "--batching_parameters_file","/models/config_batching", "--enable_batching","true"]
+
+
+
+
+```
+- Building
+```bash
+
+```
        
      
         
