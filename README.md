@@ -171,6 +171,12 @@ num_batch_threads { value: 8 }
 ```bash
 tensorflow_model_server --rest_api_port=8501 --model_config_file=/models/model.config.a --batching_parameters_file=/models/config_batching --enable_batching=true
 ```
+# kubernetes
+1. building docker file for a custom tensorflow/serving image
+  - build & push
+2. Define Kubernetes Manifests
+  - deployment & service
+3. Monitor the Deployment
 
        
      
