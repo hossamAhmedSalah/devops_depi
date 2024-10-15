@@ -92,7 +92,8 @@ curl -d @request_payload.json -H "Content-Type: application/json" -X POST http:/
 - I used another script that would send the request and map the result to the classes [predict_and_map.py](https://github.com/hossamAhmedSalah/devops_depi/blob/main/predict_and_map.py)
 - let's run it `python3 predict_and_map.py`
 ![image](https://github.com/user-attachments/assets/7db82634-5b24-4d9a-a0b3-064d7659c10b)
-
+- Let's make it more simpler and package everything in one script that is [preprocess_predict_map.py](https://github.com/hossamAhmedSalah/devops_depi/blob/main/predict_and_map.py)
+![image](https://github.com/user-attachments/assets/4b6a5120-1391-4c43-b645-4ca1f90992a5)
   
 
 
