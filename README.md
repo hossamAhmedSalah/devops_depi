@@ -154,6 +154,13 @@ curl -d @request_payload.json -H "Content-Type: application/json" -X POST http:/
          ]
         }
        ```
+     - To simplfy things further I made another script that can take the version
+       ```bash
+       python3 preprocess_predict_map_v.py <image> <mode> [<version>]
+       ```
+       ![image](https://github.com/user-attachments/assets/b577aaf1-f9c9-4c5b-90a3-b79058214139)
+
+       
      
         
 
