@@ -466,4 +466,22 @@ spec:
 ```bash
 kubectl apply -f tf-serving-monitoring.yaml
 ```
+- a modification on `tf-serving-monitoring.yaml`
+```yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: tf-serving-monitor
+  labels:
+    app: tf-serving
+spec:
+  selector:
+    matchLabels:
+      app: tf-serving
+  endpoints:
+    - port: "8501"  # Port where TensorFlow Serving is exposed
+      interval: 30s  # Scrape interval
+      path: http://35.189.228.88:8501/monitoring/prometheus/metrics
+```
+it didn't work as planed but.. enough for now 
   
