@@ -329,7 +329,20 @@ sudo docker build -t  hossamahmedsalah/tf-serving:resnet_monitoring .
 ```bash
 docker push hossamahmedsalah/tf-serving:resnet_monitoring
 ```
-       
+- Modifying the `tf-serving-deployment.yaml`
+```yaml
+image: hossamahmedsalah/tf-serving:resnet_monitoring 
+```
+- Apply the changes
+```bash
+kubectl apply -f tf-serving-deployment.yaml
+```
+- Let's check it
+```
+http://{ip}:8501/monitoring/prometheus/metrics
+```
+![image](https://github.com/user-attachments/assets/70c3f76b-e38c-4aa7-9ac7-967f6bcf29cc)
+
      
         
 
