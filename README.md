@@ -445,5 +445,6 @@ kubectl apply -f prom_service_balance.yaml
 
 ![image](https://github.com/user-attachments/assets/4fad1c78-2ca2-401e-b179-189a51ddc2fa)
 
+![image](https://github.com/user-attachments/assets/0e424f80-70c5-4d31-ba7a-63f012cb2f4f)
 
   
