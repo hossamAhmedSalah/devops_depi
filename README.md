@@ -447,4 +447,23 @@ kubectl apply -f prom_service_balance.yaml
 
 ![image](https://github.com/user-attachments/assets/0e424f80-70c5-4d31-ba7a-63f012cb2f4f)
 
+- create a service to watch tf-serving `tf-serving-monitoring.yaml`
+```yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: tf-serving-monitor
+  labels:
+    app: tf-serving
+spec:
+  selector:
+    matchLabels:
+      app: tf-serving
+  endpoints:
+    - port: "8501"  # Port where TensorFlow Serving is exposed
+      interval: 30s  # Scrape interval
+```
+```bash
+kubectl apply -f tf-serving-monitoring.yaml
+```
   
