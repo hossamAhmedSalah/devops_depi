@@ -343,13 +343,105 @@ http://{ip}:8501/monitoring/prometheus/metrics
 ```
 ![image](https://github.com/user-attachments/assets/70c3f76b-e38c-4aa7-9ac7-967f6bcf29cc)
 
-     
-        
+- create a Prometheus Service `prom_service.yaml`
+```yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: prometheus-self
+  labels:
+    app: prometheus
+spec:
+  endpoints:
+  - interval: 30s
+    port: web
+  selector:
+    matchLabels:
+      app: prometheus
 
-  
+```
+- create  deployment `prom_deployment.yaml`
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus
+  labels:
+    app: prometheus
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: prometheus
+  template:
+    metadata:
+      labels:
+        app: prometheus
+    spec:
+      containers:
+      - name: prometheus
+        image: quay.io/prometheus/prometheus:v2.22.1
+        ports:
+        - containerPort: 9090
+```
+- Apply
+```bash
+ kubectl apply -f prom_deployment.yaml
+```
+```
+
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+
+helm repo update
+
+helm install prometheus prometheus-community/prometheus-operator
+```
+![image](https://github.com/user-attachments/assets/0275a840-e99e-4193-922e-ae28781f32ce)
+
+- the one that worked
+```
+kubectl apply -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/main/bundle.yaml
+```
+```
+kubectl apply -f prom_service.yaml
+```
+![image](https://github.com/user-attachments/assets/b2d0218b-31c2-4347-91e6-411a64d6a949)
+```bash
+kubectl logs deployment/prometheus
+```
+![image](https://github.com/user-attachments/assets/ece253b5-920f-4732-a637-7aa14fe9d83f)
+- Access Prometheus UI: Since Prometheus is set up as a ClusterIP service, we will need to port-forward to access the web interface.
+```
+kubectl port-forward deployment/prometheus 9090
+
+```     
+![image](https://github.com/user-attachments/assets/234cce94-31c0-45c7-8535-d8b31b4b9e94)
+
+- Let's create a new service to balance and expose the prometheus `prom_service_balance.yaml`
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-service  
+  labels:
+    app: prometheus
+spec:
+  type: LoadBalancer
+  ports:
+    - name: web
+      port: 9090  # Port exposed externally
+      targetPort: 9090  # Port on the container (Prometheus listens on 9090)
+      protocol: TCP
+  selector:
+    app: prometheus 
+```
+```bash
+kubectl apply -f prom_service_balance.yaml
+```
+![image](https://github.com/user-attachments/assets/f5ebac3b-a782-4483-8467-17e995fb38e3)
+
+- let's seeeeee it
+![image](https://github.com/user-attachments/assets/e9e7e98a-5b7b-4f9c-ae90-96b24f9a41fc)
 
 
-  
-        
-    
   
