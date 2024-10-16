@@ -321,8 +321,14 @@ tensorflow_model_server --rest_api_port=8501 --model_config_file=/models/model.c
 # Keep the container running
 tail -f /dev/null
 ```
-
-
+- a new version of the docker image
+```bash
+sudo docker build -t  hossamahmedsalah/tf-serving:resnet_monitoring .
+```
+- Pushing
+```bash
+docker push hossamahmedsalah/tf-serving:resnet_monitoring
+```
        
      
         
