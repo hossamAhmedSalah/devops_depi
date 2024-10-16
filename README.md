@@ -304,6 +304,23 @@ kubectl get svc tf-serving-service
 
 
 ## 3. Monitoring and visualization
+- created `monitoring.config` inside `models/` to enable it on tensorflow serving.
+```config
+prometheus_config {
+  enable: true,
+  path: "/monitoring/prometheus/metrics"
+}
+```
+- modifying `run_surver.sh` by adding a new flag `--monitoring_config_file=/models/monitoring.config`
+```bash
+#!/bin/bash
+
+# Run TensorFlow Serving with the specified model and batching configurations
+tensorflow_model_server --rest_api_port=8501 --model_config_file=/models/model.config.a --batching_parameters_file=/models/config_batching --enable_batching=true --monitoring_config_file=/models/monitoring.config
+
+# Keep the container running
+tail -f /dev/null
+```
 
 
        
