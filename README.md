@@ -176,7 +176,7 @@ tensorflow_model_server --rest_api_port=8501 --model_config_file=/models/model.c
   - build & push
 2. Define Kubernetes Manifests
   - deployment & service
-3. Monitor the Deployment
+3. Monitoring and visualization
 ## 1. building docker file for a custom tensorflow/serving image
 - `run_server.sh` put it 
 ```bash
@@ -303,6 +303,7 @@ kubectl get svc tf-serving-service
 ![image](https://github.com/user-attachments/assets/afc9aeb7-3abf-4d10-8f36-d21057717562)
 
 
+## 3. Monitoring and visualization
 
 
        
