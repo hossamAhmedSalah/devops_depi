@@ -485,7 +485,7 @@ spec:
 ```
 it didn't work as planed but.. enough for now 
   
-# Scale down ant rollout
+# Scale down and rollout
 > `rollout` :is the process of updating or deploying an application in Kubernetes, typically managed by a Deployment resource. It can involve changing the container image, updating environment variables, or modifying resource requests and limits.
 > `kubectl rollout pause` command is used in Kubernetes to temporarily halt the rollout of a deployment. This command is particularly useful during updates or changes to a deployment when you want to prevent new replicas from being created or old replicas from being terminated while you are making adjustments.
 ![image](https://github.com/user-attachments/assets/1c7a8463-b925-4935-9b20-7d9daacc3d60)
