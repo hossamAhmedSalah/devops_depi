@@ -485,3 +485,30 @@ spec:
 ```
 it didn't work as planed but.. enough for now 
   
+# Scale down ant rollout
+> `rollout` :is the process of updating or deploying an application in Kubernetes, typically managed by a Deployment resource. It can involve changing the container image, updating environment variables, or modifying resource requests and limits.
+> `kubectl rollout pause` command is used in Kubernetes to temporarily halt the rollout of a deployment. This command is particularly useful during updates or changes to a deployment when you want to prevent new replicas from being created or old replicas from being terminated while you are making adjustments.
+![image](https://github.com/user-attachments/assets/1c7a8463-b925-4935-9b20-7d9daacc3d60)
+> to reverse `kubectl rollout resume` 
+```bash
+kubectl rollout resume deployment/prometheus
+kubectl rollout resume deployment/prometheus-operator
+kubectl rollout resume deployment/tf-serving-deployment
+
+```
+
+
+> scale down 
+> `kubectl scale deployment/prometheus --replicas=0`
+> `kubectl scale deployment/prometheus-operator --replicas=0`
+> `kubectl scale deployment/tf-serving-deployment --replicas=0`
+![image](https://github.com/user-attachments/assets/26c348ca-91ea-4054-9194-9c6d0c19b4e3)
+> now we don't have any pods runing so no services
+> ![image](https://github.com/user-attachments/assets/3e924500-1761-47b9-8221-7698eb879ba6)
+# Scale up 
+```bash
+kubectl scale deployment/prometheus --replicas=2
+kubectl scale deployment/prometheus-operator --replicas=1
+kubectl scale deployment/tf-serving-deployment --replicas=3
+```
+
