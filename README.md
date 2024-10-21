@@ -556,3 +556,34 @@ Password: prom-operator
 ![image](https://github.com/user-attachments/assets/9f92825f-c3aa-47e2-bcbe-9ec4bcc10199)
 
 http://34.76.207.7/d/ae1js1kcyiy9sc/kubernetes-cluster-monitoring-via-prometheus?orgId=1&refresh=10s
+# Automating the image creation with CI/CD 
+```yaml
+name: Build and Push Docker Image
+
+on:
+  push:
+    branches:
+      - test_branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build Docker Image
+        run: |
+          docker build -t hossamahmedsalah/tf-serving:latest_cicd .
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}  
+          password: ${{ secrets.DOCKER_PASSWORD }}  
+
+      - name: Push Docker Image
+        run: |
+          docker push hossamahmedsalah/tf-serving:latest_cicd
+```
