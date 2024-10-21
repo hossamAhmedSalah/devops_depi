@@ -511,4 +511,39 @@ kubectl scale deployment/prometheus --replicas=2
 kubectl scale deployment/prometheus-operator --replicas=1
 kubectl scale deployment/tf-serving-deployment --replicas=3
 ```
+# Trying 
+```bash
+helm repo add stable https://charts.helm.sh/stable
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm search repo prometheus-community
+```
+```bash
+kubectl create namespace prometheus
+```
+```bash
+helm install stable prometheus-community/kube-prometheus-stack -n prometheus
+![image](https://github.com/user-attachments/assets/f54ed1a1-7d40-45ac-8586-ed652b9aafb7)
+
+```
+![image](https://github.com/user-attachments/assets/b47a576e-0f11-4c4a-b5d1-bb81617a5b4e)
+
+- modify the yaml
+```bash
+export EDITOR=nano
+kubectl edit svc stable-kube-prometheus-sta-prometheus -n prometheus
+```
+![image](https://github.com/user-attachments/assets/1f947279-eb58-4a30-ae6d-adb8bdf459d8)
+
+- no edit grafana to make it a loadbalancer
+  ```bash
+  kubectl edit svc stable-grafana -n prometheus
+  ```
+![image](https://github.com/user-attachments/assets/aa7ffafc-0bfd-4679-acfd-768ec99c9025)
+
+- show the services
+  ```bash
+  kubectl get svc -n prometheus
+  ```
+  ![image](https://github.com/user-attachments/assets/ae804627-824d-4551-b88d-a63edcc1e9b9)
+![image](https://github.com/user-attachments/assets/ab65cd2a-d4e0-4d00-9fdd-1f7fb5661840)
 
