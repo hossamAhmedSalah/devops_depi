@@ -587,3 +587,7 @@ jobs:
         run: |
           docker push hossamahmedsalah/tf-serving:latest_cicd
 ```
+![image](https://github.com/user-attachments/assets/bb7c67a1-873a-4fb1-b1a4-d75c12536673)
+
+![image](https://github.com/user-attachments/assets/ef856ef5-410f-4f7c-8fe0-8c480675e962)
+
