@@ -547,3 +547,12 @@ kubectl edit svc stable-kube-prometheus-sta-prometheus -n prometheus
   ![image](https://github.com/user-attachments/assets/ae804627-824d-4551-b88d-a63edcc1e9b9)
 ![image](https://github.com/user-attachments/assets/ab65cd2a-d4e0-4d00-9fdd-1f7fb5661840)
 
+```
+UserName: admin 
+Password: prom-operator
+```
+![image](https://github.com/user-attachments/assets/ae6d1b6c-abdb-431a-90a0-f69ca3d1cec8)
+
+![image](https://github.com/user-attachments/assets/9f92825f-c3aa-47e2-bcbe-9ec4bcc10199)
+
+http://34.76.207.7/d/ae1js1kcyiy9sc/kubernetes-cluster-monitoring-via-prometheus?orgId=1&refresh=10s
